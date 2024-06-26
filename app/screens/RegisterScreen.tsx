@@ -11,7 +11,8 @@ type Props = {
 const RegisterScreen: React.FC<Props> = ({ navigation }) => {
   const { register } = useAuth();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(""); 
+  
 
   const handleRegister = async () => {
     try {
