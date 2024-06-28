@@ -1,8 +1,7 @@
-// context/TaskContext.tsx
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type Task = {
+export type Task = {
     id: string;
     title: string;
     description: string;
@@ -19,7 +18,11 @@ type TaskContextType = {
 
 export const TaskContext = createContext<TaskContextType | undefined>(undefined);
 
-export const TaskProvider: React.FC = ({ children }) => {
+type TaskProviderProps = {
+    children: ReactNode;
+};
+
+export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     useEffect(() => {

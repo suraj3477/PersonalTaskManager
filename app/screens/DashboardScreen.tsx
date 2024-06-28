@@ -1,10 +1,10 @@
 // screens/DashboardScreen.tsx
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { DashboardScreenNavigationProp } from '../navigation/types';
+import { DashboardScreenNavigationProp, TaskScreenNavigationProp } from '../navigation/types';
  
 type Props = {
-  navigation: DashboardScreenNavigationProp;
+  navigation: TaskScreenNavigationProp;
 };
 
 const DashboardScreen: React.FC<Props> = ({ navigation }) => {
