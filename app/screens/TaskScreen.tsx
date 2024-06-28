@@ -1,27 +1,27 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { RouteProp, NavigationProp } from '@react-navigation/native';
-import { TaskContext, Task } from '../context/TaskContext';  
-import { v4 as uuidv4 } from 'uuid';  
+import { TaskContext, Task } from '../context/TaskContext';
+import uuid from 'uuid-random'; // Import uuid-random for generating task IDs
 
 type Props = {
-    route: RouteProp<{ params: { task?: Task } }, 'params'>;  
-    navigation: NavigationProp<any>;  
+    route: RouteProp<{ params: { task?: Task } }, 'params'>;
+    navigation: NavigationProp<any>;
 };
 
 const TaskScreen: React.FC<Props> = ({ route, navigation }) => {
-    const { addTask, updateTask }: any = useContext(TaskContext);  
+    const { addTask, updateTask }: any = useContext(TaskContext);
     const task: Task | undefined = route.params?.task;
     const [title, setTitle] = useState(task?.title || '');
     const [description, setDescription] = useState(task?.description || '');
     const [dueDate, setDueDate] = useState(task?.dueDate || '');
-    const [status, setStatus] = useState<'pending' | 'completed'>(task?.status || 'pending');  
+    const [status, setStatus] = useState<'pending' | 'completed'>(task?.status || 'pending');
 
     const handleSave = () => {
         if (task) {
             updateTask({ ...task, title, description, dueDate, status });
         } else {
-            addTask({ id: uuidv4(), title, description, dueDate, status });
+            addTask({ id: uuid(), title, description, dueDate, status }); // Generate UUID using uuid()
         }
         navigation.goBack();
     };
