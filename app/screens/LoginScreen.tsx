@@ -1,4 +1,3 @@
-// screens/LoginScreen.tsx
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
 import { useAuth } from "../context/AuthContext";
@@ -16,7 +15,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
   const handleLogin = async () => {
     try {
       await login(email, password);
-      navigation.navigate("Dashboard"); 
+      navigation.navigate("Dashboard");
     } catch (error: any) {
       Alert.alert("Error", error.message ? error.message : "An error occurred");
     }

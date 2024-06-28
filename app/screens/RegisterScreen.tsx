@@ -1,7 +1,7 @@
 // screens/RegisterScreen.tsx
 import React, { useContext, useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Alert } from "react-native";
-import { AuthContext, useAuth } from "../context/AuthContext";
+import {  useAuth } from "../context/AuthContext";
 import { RegisterScreenNavigationProp } from "../navigation/types";
 
 type Props = {
@@ -11,8 +11,7 @@ type Props = {
 const RegisterScreen: React.FC<Props> = ({ navigation }) => {
   const { register } = useAuth();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); 
-  
+  const [password, setPassword] = useState("");
 
   const handleRegister = async () => {
     try {

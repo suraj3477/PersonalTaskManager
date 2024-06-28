@@ -1,29 +1,11 @@
-// navigation/types.ts
-import { StackNavigationProp } from "@react-navigation/stack";
-
-export type MainStackParamList = {
-  Dashboard: undefined;
-  Task: undefined;
-  Main: undefined;
-};
-
-export type DashboardScreenNavigationProp = StackNavigationProp<
-  MainStackParamList,
-  "Dashboard"
->;
-
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
-  Dashboard: undefined;  
+  Dashboard: undefined;
 };
 
-export type LoginScreenNavigationProp = StackNavigationProp<
-  AuthStackParamList,
-  "Login"
->;
-export type RegisterScreenNavigationProp = StackNavigationProp<
-  AuthStackParamList,
-  "Register"
->;
+export type LoginScreenNavigationProp = StackNavigationProp<AuthStackParamList, 'Login'>;
+export type RegisterScreenNavigationProp = StackNavigationProp<AuthStackParamList, 'Register'>;
+export type DashboardScreenNavigationProp = StackNavigationProp<AuthStackParamList, 'Dashboard'>;
