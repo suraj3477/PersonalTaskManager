@@ -118,10 +118,10 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.task}>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
-            <Text>{item.dueDate}</Text>
-            <Text>{item.status}</Text>
+            <Text>Title : {item.title}</Text>
+            <Text>Description : {item.description}</Text>
+            <Text>DueDate : {item.dueDate}</Text>
+            <Text>Status : {item.status}</Text>
             <Button
               title="Edit"
               onPress={() => navigation.navigate("Task", { task: item })}

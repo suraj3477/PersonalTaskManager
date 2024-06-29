@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -16,6 +16,7 @@ import {
 } from "../navigation/types";
 import uuid from "uuid-random";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import LottieView from "lottie-react-native";
 
 type Props = {
   route: TaskScreenRouteProp;
@@ -40,10 +41,23 @@ const TaskScreen: React.FC<Props> = ({ route, navigation }) => {
     task?.status || "pending"
   );
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(false);
+
+  useEffect(() => {
+    const delayAndNavigateBack = () => {
+      setTimeout(() => {
+        navigation.goBack();
+      }, 3000);
+    };
+
+    if (showAnimation) {
+      delayAndNavigateBack();
+    }
+  }, [showAnimation, navigation]);
 
   const handleDateChange = (event: any, selectedDate?: Date) => {
     const currentDate = selectedDate || dueDate;
-    setShowDatePicker(Platform.OS === "ios");  
+    setShowDatePicker(Platform.OS === "ios");
     setDueDate(currentDate);
   };
 
@@ -66,7 +80,7 @@ const TaskScreen: React.FC<Props> = ({ route, navigation }) => {
         status,
       });
     }
-    navigation.goBack();
+    setShowAnimation(true);
   };
 
   return (
@@ -107,6 +121,16 @@ const TaskScreen: React.FC<Props> = ({ route, navigation }) => {
         style={styles.input}
       />
       <Button title="Save Task" onPress={handleSave} />
+
+      {/* Lottie Animation */}
+      {showAnimation && (
+        <LottieView
+          source={require("../json/addedTask.json")}  
+          autoPlay
+          loop={false}
+          style={styles.animation}
+        />
+      )}
     </View>
   );
 };
@@ -128,6 +152,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
+  },
+  animation: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
   },
 });
 
