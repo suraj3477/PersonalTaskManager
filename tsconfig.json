@@ -1,12 +1,21 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "strict": true,
-    "jsx": "react",
-    "esModuleInterop": true,
+    "lib": ["dom", "es2015"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "types": ["jest"]
   },
-  "extends": "expo/tsconfig.base"
+  "include": ["**/*.ts", "**/*.tsx", "__tests__/**/*"],
+  "exclude": ["node_modules"]
 }

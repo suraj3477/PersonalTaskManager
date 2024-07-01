@@ -125,7 +125,7 @@ const TaskScreen: React.FC<Props> = ({ route, navigation }) => {
       {/* Lottie Animation */}
       {showAnimation && (
         <LottieView
-          source={require("../json/addedTask.json")}  
+          source={require("../json/addedTask.json")}
           autoPlay
           loop={false}
           style={styles.animation}
