@@ -8,7 +8,7 @@ type Props = {
 };
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,6 +20,10 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       Alert.alert("Error", error.message ? error.message : "An error occurred");
     }
   };
+
+   if (!isAuthenticated) {
+    navigation.navigate("Register");
+  }
 
   return (
     <View style={styles.container}>
@@ -38,6 +42,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
         style={styles.input}
       />
       <Button title="Login" onPress={handleLogin} />
+      <View style={{marginTop:10}}/>
       <Button
         title="Register"
         onPress={() => navigation.navigate("Register")}

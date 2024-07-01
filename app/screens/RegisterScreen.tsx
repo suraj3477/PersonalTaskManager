@@ -39,6 +39,7 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         style={styles.input}
       />
       <Button title="Register" onPress={handleRegister} />
+      <View style={{marginTop:10}}/>
       <Button title="Login" onPress={() => navigation.navigate("Login")} />
     </View>
   );
